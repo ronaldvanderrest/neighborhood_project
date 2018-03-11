@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      html,
+      body {
+        font-family: Arial, sans-serif;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+			
+      #map {
+        bottom:0px;
+        height: 100%;
+        left: 362px;
+        position: absolute;
+        right: 0px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="options-box">
+        <h1>Ronald Locations</h1>
+        <div>
+        	<input id="filter-text" type="text" placeholder="Filter Locations">
+          <input id="filter-button" type="button" value="Filter">
+        </div>
+      </div>
+      <div id="map"></div>
+    </div>
+    <script src="js/map.js"></script>
+
+    <script async defer
+        src=
+        "https://maps.googleapis.com/maps/api/js?libraries=geometry,drawing&key=AIzaSyBYbYq9ZXF39sF__GBdvAPkWd42baMFYTM&v=3&callback=initMap">
+    </script>
+
+  </body>
+</html>
