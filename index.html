@@ -26,12 +26,18 @@
         <div>
         	<input id="filter-text" type="text" placeholder="Filter Locations">
           <input id="filter-button" type="button" value="Filter">
-        </div>
+				</div>
+				<div>
+					<ul data-bind="foreach: locationList">
+						<li data-bind="text: title"></li>
+					</ul>
+				</div>
       </div>
       <div id="map"></div>
     </div>
 
 		<script src="js/lib/knockout-3.4.2.js"></script>
+		<script src="js/list.js"></script>
 		<script src="js/map.js"></script>
     <script async defer
         src=
