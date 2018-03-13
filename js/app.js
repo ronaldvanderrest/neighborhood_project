@@ -100,6 +100,9 @@ var ViewModel = function() {
 	// Create an infowindow for when you select a location
 	var infoWindow = new google.maps.InfoWindow();
 
+	// Create observable for the searchbox
+	this.searchBox = ko.observable("");
+
 	// create an empty observable array
 	this.locationList = ko.observableArray([]);
 
@@ -131,4 +134,18 @@ var ViewModel = function() {
 	this.selectLocation = function(clickedLocation) {
 		populateInfoWindow(clickedLocation.marker, infoWindow);
 	};
+
+	this.locationFilteredList = ko.computed(function(){
+		result = [];
+		for (i = 0; i < locations.length; i++) {
+			var locationTitle = locations[i].title;
+			if (locationTitle.toUpperCase().includes(self.searchBox().toUpperCase())) {
+				locations[i].marker.setVisible(true);
+				result.push(locations[i]);
+			} else {
+				locations[i].marker.setVisible(false);
+			}
+		}
+		return result;
+	}, this);
 };

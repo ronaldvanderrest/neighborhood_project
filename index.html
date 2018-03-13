@@ -24,11 +24,11 @@
       <div class="options-box">
         <h1>Ronald Locations</h1>
         <div>
-        	<input id="filter-text" type="text" placeholder="Filter Locations">
+        	<input id="myInput" data-bind="textInput: searchBox" type="text">
           <input id="filter-button" type="button" value="Filter">
 				</div>
 				<div>
-					<ul data-bind="foreach: locations">
+					<ul id="myUL" data-bind="foreach: locationFilteredList">
 						<li data-bind="click: $parent.selectLocation, text: title"></li>
 					</ul>
 				</div>
