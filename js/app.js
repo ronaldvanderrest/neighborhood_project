@@ -126,4 +126,9 @@ var ViewModel = function() {
 	});
 	// Apply the boundary to the map
 	map.fitBounds(bounds);
+
+	// Function that is invoked to select a location from the list
+	this.selectLocation = function(clickedLocation) {
+		populateInfoWindow(clickedLocation.marker, infoWindow);
+	};
 };
