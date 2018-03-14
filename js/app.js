@@ -87,7 +87,8 @@ var locations = [
 // Template to make Locations into an observable
 var Location = function(data){
     this.title = ko.observable(data.title);
-    this.location = ko.observable(data.location);
+	this.location = ko.observable(data.location);
+	this.marker = ko.observable
 };
 
 
@@ -107,27 +108,28 @@ var ViewModel = function() {
 	this.locationList = ko.observableArray([]);
 
 	// fill the empty observable array with the items from the model
-	locations.forEach(function(item){
-			self.locationList.push( new Location(item));
+	locations.forEach(function(location){
+		self.locationList.push( new Location(location));
 	});
 
 	// iterate over the locations and create a marker. Also including it in the model
-	locations.forEach(function(location) {
-			// Create a marker per location, and put into markers array.
-			var marker = new google.maps.Marker({
-				map: map,
-				position: location.location,
-				title: location.title,
-				animation: google.maps.Animation.DROP
+	self.locationList().forEach(function(location) {
+		// Create a marker per location, and put into markers array.
+		var marker = new google.maps.Marker({
+			map: map,
+			position: location.location(),
+			title: location.title(),
+			animation: google.maps.Animation.DROP
+		});
+		location.marker = marker;
+		// extend the boundary if the marker is outside it
+		bounds.extend(marker.position);
+		marker.addListener('click', function() {
+			populateInfoWindow(this, infoWindow);
 			});
-			location.marker = marker;
-			// extend the boundary if the marker is outside it
-			bounds.extend(marker.position);
-			marker.addListener('click', function() {
-				populateInfoWindow(this, infoWindow);
-			  });
 	});
-	// Apply the boundary to the map
+	// Apply the boundary to the map after all markers are created and extended
+	// the boundary
 	map.fitBounds(bounds);
 
 	// Function that is invoked to select a location from the list
@@ -137,13 +139,13 @@ var ViewModel = function() {
 
 	this.locationFilteredList = ko.computed(function(){
 		result = [];
-		for (i = 0; i < locations.length; i++) {
-			var locationTitle = locations[i].title;
-			if (locationTitle.toUpperCase().includes(self.searchBox().toUpperCase())) {
-				locations[i].marker.setVisible(true);
-				result.push(locations[i]);
+		for (i = 0; i < self.locationList().length; i++) {
+			var locationTitle = self.locationList()[i].title;
+			if (locationTitle().toUpperCase().includes(self.searchBox().toUpperCase())) {
+				self.locationList()[i].marker.setVisible(true);
+				result.push(self.locationList()[i]);
 			} else {
-				locations[i].marker.setVisible(false);
+				self.locationList()[i].marker.setVisible(false);
 			}
 		}
 		return result;
