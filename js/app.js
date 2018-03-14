@@ -17,10 +17,12 @@ function initMap() {
 // This function populates the infowindow specified with information of the 
 // clicked location
 function populateInfoWindow(marker, infowindow) {
+	console.log(marker);
 	// check if the infowindow is already opened at the clicked marker
 	if (infowindow.marker != marker) {
 		// put the infowindow at the clicked marker
 		infowindow.marker = marker;
+		infowindow.marker.setAnimation(google.maps.Animation.BOUNCE);
 		// lat and lon values from the marker for foursquare api search
 		var lat = marker.getPosition().lat();
 		var lng = marker.getPosition().lng();
@@ -32,7 +34,6 @@ function populateInfoWindow(marker, infowindow) {
 		// set html variables to be filled by the ajax requests
 		var venueDetailsHtml;
 		var venuePhoto;
-
 		// perform AJAX request to get venue details
 		$.getJSON(fsVenueDetailsUrl, function(data){
 			var venue = data.response.venues[0];
@@ -56,8 +57,6 @@ function populateInfoWindow(marker, infowindow) {
 				var err = textStatus + ", " + error;
 				console.log( "Request Failed: " + err );
 			});
-
-
 			venueDetailsHtml = '<div><h3>' + venueName + '</h3>' + '<h4>' + venueCategory + '</h4><img src=' + venuePhoto + '></div>';
 			infowindow.setContent(venueDetailsHtml);
 		}).fail(function( jqxhr, textStatus, error ) {
