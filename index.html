@@ -8,20 +8,32 @@
 
   </head>
   <body>
-    <div class="container">
-      <div class="options-box">
-        <h1>Ronald Locations</h1>
-        <div>
-        	<input id="myInput" data-bind="textInput: searchBox" type="text">
-          <input id="filter-button" type="button" value="Filter">
-				</div>
-				<div>
-					<ul id="myUL" data-bind="foreach: locationFilteredList">
-						<li data-bind="click: $parent.selectLocation, text: title"></li>
-					</ul>
-				</div>
+    <nav class="navbar navbar-dark bg-dark">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button class="navbar-toggler toggle-sidebar" type="button" >
+              <span class="navbar-toggler-icon"></span>
+          </button>
+        </div>
       </div>
-      <div id="map"></div>
+    </nav>
+    <div class="container-fluid">
+      <div class="row" id="row-main">
+        <div class="col-md-3 bg-secondary" id="sidebar">
+          <div>
+            <h1 id="header">Ronald Locations</h1>
+            <input data-bind="textInput: searchBox" type="text" placeholder="filter...">
+          </div>
+          <div>
+            <ul data-bind="foreach: locationFilteredList">
+              <li data-bind="click: $parent.selectLocation, text: title"></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-md-9" id="content">
+          <div id="map"></div>
+        </div>
+      </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
@@ -32,6 +44,16 @@
     <script async defer
         src=
         "https://maps.googleapis.com/maps/api/js?libraries=geometry,drawing&key=AIzaSyBYbYq9ZXF39sF__GBdvAPkWd42baMFYTM&v=3&callback=initMap">
+    </script>
+    <script>
+        $(document).ready(function () {
+          $(".toggle-sidebar").click(function () {
+            $("#sidebar").toggleClass("collapsed");
+            $("#content").toggleClass("col-md-12 col-md-9");
+            
+            return false;
+          });
+        });
     </script>
 
   </body>

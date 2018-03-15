@@ -1,7 +1,72 @@
 #map {
     bottom:0px;
     height: 100%;
-    left: 362px;
+    left: 0px;
     position: absolute;
     right: 0px;
   }
+
+html, body, .container-fluid, .row{
+    height: 100%;
+    min-height: 100%;
+}
+
+/* .col-md-3 {
+    background-color: ;
+} */
+
+
+.collapsed {
+    display: none;
+}
+
+@media (min-width: 992px) {
+    .collapsed {
+        display: block;
+        margin-left: -25%;
+    }
+}
+
+#row-main {
+    overflow-x: hidden; 
+}
+
+#content {
+    -webkit-transition: width 0.3s ease;
+    -moz-transition: width 0.3s ease;
+    -o-transition: width 0.3s ease;
+    transition: width 0.3s ease;
+}
+#sidebar {
+    -webkit-transition: margin 0.3s ease;
+    -moz-transition: margin 0.3s ease;
+    -o-transition: margin 0.3s ease;
+    transition: margin 0.3s ease;
+}
+
+#header {
+    color: whitesmoke;
+}
+
+input {
+    width: 100%;
+    font-size: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+li {
+    border-bottom: 1px solid #ddd;
+    font-size: 20px;
+    padding: 12px;
+}
+
+li:hover {
+    background-color: #eee;
+}
