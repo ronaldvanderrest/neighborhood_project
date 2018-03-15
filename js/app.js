@@ -17,12 +17,13 @@ function initMap() {
 // This function populates the infowindow specified with information of the 
 // clicked location
 function populateInfoWindow(marker, infowindow) {
-	console.log(marker);
 	// check if the infowindow is already opened at the clicked marker
 	if (infowindow.marker != marker) {
 		// put the infowindow at the clicked marker
 		infowindow.marker = marker;
+		// animate the marker
 		infowindow.marker.setAnimation(google.maps.Animation.BOUNCE);
+		setTimeout(function(){ infowindow.marker.setAnimation(null); }, 750);
 		// lat and lon values from the marker for foursquare api search
 		var lat = marker.getPosition().lat();
 		var lng = marker.getPosition().lng();
