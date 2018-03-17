@@ -11,9 +11,9 @@ html, body, .container-fluid, .row{
     min-height: 100%;
 }
 
-/* .col-md-3 {
-    background-color: ;
-} */
+img {
+    max-width: 100%;
+}
 
 
 .collapsed {
@@ -69,4 +69,12 @@ li {
 
 li:hover {
     background-color: #eee;
+}
+
+#attribution {
+    margin-top: 30px;
+}
+
+p {
+    text-align: right;
 }
