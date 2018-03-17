@@ -12,6 +12,7 @@ the Foursquare API.
 - javascript (jquery, knockout)
 - Google Maps API
 - Foursquare API
+- bootstrap
 
 ## Installation
 Clone the repository and open the `index.html` file in your favourite browser.
