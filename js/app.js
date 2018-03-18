@@ -1,6 +1,4 @@
 var map;
-// Create a new blank array for all the listing markers.
-var markers = [];
 
 // Initialise the map
 function initMap() {
@@ -14,8 +12,8 @@ function initMap() {
         mapTypeControl: true
     });
 
-    ko.applyBindings(new ViewModel())
-};
+    ko.applyBindings(new ViewModel());
+}
 
 // This function populates the infowindow specified with information of the 
 // clicked location
@@ -54,7 +52,6 @@ function populateInfoWindow(marker, infowindow) {
                     async: false,
                     url: fsPhotosUrl
                 }).done(function(data) {
-                    var debug = data.response.photos.items[0].suffix;
                     var photoPrefix = data.response.photos.items[0].prefix;
                     var photoSuffix = data.response.photos.items[0].suffix;
                     venuePhoto = photoPrefix + 'height100' + photoSuffix;
@@ -148,7 +145,7 @@ var ViewModel = function() {
 
     // iterate over the locations and create a marker. Also including it in the model
     self.locationList().forEach(function(location) {
-        // Create a marker per location, and put into markers array.
+        // Create a marker per location, and put into location array.
         var marker = new google.maps.Marker({
             map: map,
             position: location.location(),
