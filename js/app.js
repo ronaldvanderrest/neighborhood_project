@@ -189,4 +189,4 @@ var ViewModel = function() {
 // error handling function for the google api
 function googleError() {
     alert('Failed to load google maps');
-};
+}
