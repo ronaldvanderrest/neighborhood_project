@@ -59,13 +59,14 @@ function populateInfoWindow(marker, infowindow) {
                 .fail(function(jqxhr, textStatus, error) {
                     var err = textStatus + ", " + error;
                     console.log("Request Failed: " + err);
+                    alert('The request to Foursquare failed');
                 });
             venueDetailsHtml = '<div><h3>' + venueName + '</h3>' + '<h4>' + venueCategory + '</h4><img src=' + venuePhoto + '></div>';
             infowindow.setContent(venueDetailsHtml);
         }).fail(function(jqxhr, textStatus, error) {
             var err = textStatus + ", " + error;
             console.log("Request Failed: " + err);
-            infowindow.setContent('<div><h5>Failed to request Foursquare</h5></div>');
+            alert('The request to Foursquare failed');
         });
         // set content in the infowindow
         infowindow.open(map, marker);
