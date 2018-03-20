@@ -20,6 +20,8 @@ function initMap() {
 function populateInfoWindow(marker, infowindow) {
     // check if the infowindow is already opened at the clicked marker
     if (infowindow.marker != marker) {
+        // make sure the infobox starts empty
+        infowindow.setContent('');
         // put the infowindow at the clicked marker
         infowindow.marker = marker;
         // animate the marker
