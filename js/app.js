@@ -26,7 +26,7 @@ function populateInfoWindow(marker, infowindow) {
         infowindow.marker.setAnimation(google.maps.Animation.BOUNCE);
         setTimeout(function() {
             infowindow.marker.setAnimation(null);
-        }, 750);
+        }, 700);
         // lat and lon values from the marker for foursquare api search
         var lat = marker.getPosition().lat();
         var lng = marker.getPosition().lng();
