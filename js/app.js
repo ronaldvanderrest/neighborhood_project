@@ -136,10 +136,10 @@ var ViewModel = function() {
     var infoWindow = new google.maps.InfoWindow();
 
     // Create observable for the searchbox
-    this.searchBox = ko.observable("");
+    self.searchBox = ko.observable("");
 
     // create an empty observable array
-    this.locationList = ko.observableArray([]);
+    self.locationList = ko.observableArray([]);
 
     // fill the empty observable array with the items from the model
     locations.forEach(function(location) {
@@ -167,11 +167,11 @@ var ViewModel = function() {
     map.fitBounds(bounds);
 
     // Function that is invoked to select a location from the list
-    this.selectLocation = function(clickedLocation) {
+    self.selectLocation = function(clickedLocation) {
         populateInfoWindow(clickedLocation.marker, infoWindow);
     };
 
-    this.locationFilteredList = ko.computed(function() {
+    self.locationFilteredList = ko.computed(function() {
         result = [];
         for (i = 0; i < self.locationList().length; i++) {
             var locationTitle = self.locationList()[i].title;
@@ -183,5 +183,5 @@ var ViewModel = function() {
             }
         }
         return result;
-    }, this);
+    }, self);
 };
