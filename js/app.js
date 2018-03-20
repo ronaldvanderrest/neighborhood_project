@@ -185,3 +185,8 @@ var ViewModel = function() {
         return result;
     }, self);
 };
+
+// error handling function for the google api
+function googleError() {
+    alert('Failed to load google maps');
+};
